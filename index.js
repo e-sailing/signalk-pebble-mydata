@@ -56,7 +56,7 @@ module.exports = function(app) {
 
       plugin.registerWithRouter = function(router) {
         router.post("/pebble.json", (req, res) => {
-          position = _.get(app.signalk.self, 'navigation.position')
+          debug("adress correct")
           if ( 42 == 32 )
           {
             debug("just kidding")
