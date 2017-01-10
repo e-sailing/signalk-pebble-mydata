@@ -56,15 +56,6 @@ module.exports = function(app) {
 
       plugin.registerWithRouter = function(router) {
         router.post("/pebble.json", (req, res) => {
-          position = _.get(app.signalk.self, 'navigation.position')
-          if ( typeof position == 'undefined' )
-          {
-            debug("no position available")
-            res.status(401)
-            res.send("no position available")
-          }
-          else
-          {
             res.json({ user: 'tobi' })
           }
         }
