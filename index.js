@@ -148,7 +148,7 @@ plugin.registerWithRouter = function(router) {
         debug("correct address")
         //for each subscribe
         var sogFloat = _.get(app.signalk.self, 'navigation.speedOverGround.value')
-        var sog = Math.round(sogFloat).toFixed(2)
+        var sog = sogFloat.toFixed(2)
         debug("sog: " + sog)
         res.json({
           "content": "SOG: " + sog + "\nWorld!  \nGood  \nDay ",
