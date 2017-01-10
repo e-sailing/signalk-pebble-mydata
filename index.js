@@ -55,7 +55,7 @@ module.exports = function(app) {
     }) => {
 
       plugin.registerWithRouter = function(router) {
-        router.post("/pebble.json", (req, res) => {
+        router.get("/pebble.json", (req, res) => {
           debug("adress correct")
           if ( 42 == 32 )
           {
