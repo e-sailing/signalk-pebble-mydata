@@ -134,7 +134,7 @@ plugin.start = function(options) {*/
       show,
     }) => {
       if(active) {
-        var keyValue = _.get(app.signalk.self, key)
+        var keyValue = _.get(app.signalk.self, key + ".value")
         //exp:
 
         jsonContent += show + ": " + keyValue + "\n"
@@ -149,7 +149,6 @@ plugin.start = function(options) {*/
 plugin.registerWithRouter = function(router) {
 
       router.get("/pebble.json", (req, res) => {
-        debug("correct address")
         debug("jsonContent: " + jsonContent)
         //for each subscribe
         //var sogFloat = _.get(app.signalk.self, 'navigation.speedOverGround.value')
@@ -162,7 +161,7 @@ plugin.registerWithRouter = function(router) {
         }
 
         res.json({
-          "content": "SOG: " + sog + "\nWorld!  \nGood  \nDay ",
+          "content": "SOG: " + sog + "\n" + jsonContent + "\nDay ",
           "refresh": refresh,
           "vibrate": vibrate,
           "font": font,
