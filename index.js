@@ -1,10 +1,6 @@
 const signalkSchema = require('signalk-schema')
 const Bacon = require('baconjs')
-var express = require("express"),
-    http = require("http"),
-    path = require("path"),
-    redisClient = require("redis").createClient(),
-    app = express();
+var express = require("express")
 
 const relevantKeys = Object.keys(signalkSchema.metadata)
   .filter(s => s.indexOf('/vessels/*') >= 0)
