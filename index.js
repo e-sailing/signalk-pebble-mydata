@@ -142,7 +142,7 @@ plugin.start = function(options) {*/
     }, [])
     return true
   }
-*/
+
 
 plugin.registerWithRouter = function(router) {
 
