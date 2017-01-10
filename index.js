@@ -18,6 +18,8 @@ module.exports = function(app) {
 
   plugin.schema = {
     type: "object",
+    title: "A signalk node plugin to show boat data on Pebble smartwatch",
+    description: "Point your Mydata app to the address: http://<IP>:<port>/plugin/" + plugin.id + "pebble.json",
     required: [
       "refresh", "vibrate", "font", "theme", "scroll", "light", "blink", "updown"
     ],
@@ -153,7 +155,7 @@ plugin.registerWithRouter = function(router) {
           var sog = sogFloat.toFixed(2)
           debug("sog: " + sog)
         } else {
-          sog = 'NaN'
+          sog = 'N/A'
         }
 
         res.json({
