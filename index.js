@@ -1,6 +1,7 @@
 const signalkSchema = require('signalk-schema')
 const Bacon = require('baconjs')
 var express = require("express")
+const debug = require('debug')('signalk-pebble-mydata')
 
 const relevantKeys = Object.keys(signalkSchema.metadata)
   .filter(s => s.indexOf('/vessels/*') >= 0)
