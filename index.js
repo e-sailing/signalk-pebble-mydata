@@ -147,10 +147,10 @@ plugin.registerWithRouter = function(router) {
       router.get("/pebble.json", (req, res) => {
         debug("correct address")
         //for each subscribe
-        var perform = _.get(app.signalk.self, 'performance.polarSpeedRatio.value')
-        debug("performance ratio: " + perform)
+        var sog = _.get(app.signalk.self, 'navigation.speedOverGround.value')
+        debug("sog: " + sog)
         res.json({
-          "content": "performance: " + perform + "\nWorld!  \nGood  \nDay ",
+          "content": "SOG: " + sog + "\nWorld!  \nGood  \nDay ",
           "refresh": refresh,
           "vibrate": vibrate,
           "font": font,
