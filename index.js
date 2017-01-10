@@ -47,12 +47,10 @@ module.exports = function(app) {
   }
 }
 }
-  plugin.start = function(options) {
-    unsubscribes = (options.elements || []).reduce((acc, {
-      key,
-      active,
-      show,
-    }))}
+plugin.start = function(props) {
+  debug("starting...")
+  debug("started")
+}
 
     plugin.registerWithRouter = function(router) {
 
