@@ -16,7 +16,11 @@ module.exports = function(app) {
   plugin.description = "A signalk node plugin to show boat data on Pebble smartwatch"
 
   plugin.schema = {
-  type: "object",
+    type: "object",
+    required: [
+      "refresh", "vibrate", "font", "theme", "scroll", "light", "blink", "updown"
+    ],
+
   properties: {
     refresh: {
       type: "number",
@@ -99,14 +103,14 @@ plugin.start = function(props) {
         debug("correct address")
         res.json({
   "content": "Hello \nWorld!  \nGood  \nDay ",
-  "refresh": options.refresh,
-  "vibrate": options.vibrate,
-  "font": options.font,
-  "theme": options.theme,
-  "scroll": options.scroll,
-  "light": options.light,
-  "blink": options.blink,
-  "updown": options.updown
+  "refresh": props.refresh,
+  "vibrate": props.vibrate,
+  "font": props.font,
+  "theme": props.theme,
+  "scroll": props.scroll,
+  "light": props.light,
+  "blink": props.blink,
+  "updown": props.updown
 })
 
 
