@@ -6,8 +6,6 @@ const relevantKeys = Object.keys(signalkSchema.metadata)
   .filter(s => s.indexOf('/vessels/*') >= 0)
   .map(s => s.replace('/vessels/*', '').replace(/\//g, '.').replace(/RegExp/g, '*').substring(1)).sort()
 
-app.use(express.static('/public'))
-
 module.exports = function(app) {
   var plugin = {}
   var unsubscribes = []
@@ -23,7 +21,7 @@ module.exports = function(app) {
       type: "array",
       title: " ",
       items: {
-        title: "Categories",
+        title: "Data to display",
         type: "object",
         properties: {
           "active": {
@@ -55,12 +53,30 @@ module.exports = function(app) {
       active,
       show,
     }) => {
-      if(active) {
+
+      plugin.registerWithRouter = function(router) {
+        router.post("/pebble.json", (req, res) => {
+          position = _.get(app.signalk.self, 'navigation.position')
+          if ( typeof position == 'undefined' )
+          {
+            debug("no position available")
+            res.status(401)
+            res.send("no position available")
+          }
+          else
+          {
+            res.json({ user: 'tobi' })
+          }
+        }
+      )}
+
+
+      /*if(active) {
         // GET method route
         app.get('/pebble.json', function (req, res) {
           res.json({ user: 'tobi' })
         })
-      }
+      }*/
       return acc
     }, [])
     return true
