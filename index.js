@@ -8,6 +8,8 @@ const relevantKeys = Object.keys(signalkSchema.metadata)
   .filter(s => s.indexOf('/vessels/*') >= 0)
   .map(s => s.replace('/vessels/*', '').replace(/\//g, '.').replace(/RegExp/g, '*').substring(1)).sort()
 
+var jsonContent = ""
+
 module.exports = function(app) {
   var plugin = {}
   var unsubscribes = []
@@ -134,7 +136,7 @@ plugin.start = function(options) {*/
       if(active) {
         var keyValue = _.get(app.signalk.self, key)
         //exp:
-        var jsonContent = ""
+
         jsonContent += show + ": " + keyValue + "\n"
 
       }
