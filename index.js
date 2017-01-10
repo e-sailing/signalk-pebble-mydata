@@ -52,15 +52,27 @@ module.exports = function(app) {
       key,
       active,
       show,
-    }))}
+    }) => {
 
-    plugin.registerWithRouter = function(router) {
+      plugin.registerWithRouter = function(router) {
         router.post("/pebble.json", (req, res) => {
+          
             res.json({ user: 'tobi' })
-          })
+          }
         }
+      )}
 
 
+      /*if(active) {
+        // GET method route
+        app.get('/pebble.json', function (req, res) {
+          res.json({ user: 'tobi' })
+        })
+      }*/
+      return acc
+    }, [])
+    return true
+  }
 
   plugin.stop = function() {
     unsubscribes.forEach(f => f())
