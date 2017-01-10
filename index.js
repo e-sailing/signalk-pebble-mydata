@@ -55,7 +55,7 @@ plugin.start = function(props) {
 
     plugin.registerWithRouter = function(router) {
 
-      router.post("/pebble.json", (req, res) => {
+      router.get("/pebble.json", (req, res) => {
         debug("correct address")
         res.json({
   "content": "Hello\nWorld!",
