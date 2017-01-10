@@ -93,6 +93,10 @@ module.exports = function(app) {
 }
 }
 plugin.start = function(props) {
+  //from signalk-to-nmea0183:
+  //const selfContext = 'vessels.' + app.selfId
+  //const selfMatcher = (delta) => delta.context && delta.context === selfContext
+
   refresh = props.refresh
   vibrate = props.vibrate
   font = props.font
@@ -105,12 +109,46 @@ plugin.start = function(props) {
   debug("started")
 }
 
+//zones-edit:
+/*
+plugin.start = function(options) {
+    refresh = props.refresh
+    vibrate = props.vibrate
+    font = props.font
+    theme = props.theme
+    scroll = props.scroll
+    light = props.light
+    blink = props.blink
+    updown = props.updown
+    debug("starting...")
+    debug("started")
+
+    unsubscribes = (options.elements || []).reduce((acc, {
+      key,
+      active,
+      show,
+    }) => {
+      if(active) {
+        var stream = app.streambundle.getSelfStream(key)
+        //exp:
+        var jsonContent
+        jsonContent += show + ": " + stream
+        debug("jsonContent: " + jsonContent )
+      }
+      return acc
+    }, [])
+    return true
+  }
+*/
+
 plugin.registerWithRouter = function(router) {
 
       router.get("/pebble.json", (req, res) => {
         debug("correct address")
+        //for each subscribe
+        var perform = _.get(app.signalk.self, 'performance.polarSpeedRatio.value')
         res.json({
-          "content": "Hello \nWorld!  \nGood  \nDay ",
+          "content": "performance: " + perform + "\nWorld!  \nGood  \nDay ",
           "refresh": refresh,
           "vibrate": vibrate,
           "font": font,
