@@ -134,7 +134,7 @@ plugin.start = function(options) {*/
       if(active) {
         var keyValue = _.get(app.signalk.self, key)
         //exp:
-        var jsonContent
+        var jsonContent = ""
         jsonContent += show + ": " + keyValue + "\n"
 
       }
@@ -148,7 +148,7 @@ plugin.registerWithRouter = function(router) {
 
       router.get("/pebble.json", (req, res) => {
         debug("correct address")
-        debug("jsonContent: " + (JSON.stringify(jsonContent)))
+        debug("jsonContent: " + jsonContent)
         //for each subscribe
         //var sogFloat = _.get(app.signalk.self, 'navigation.speedOverGround.value')
         var sogFloat = _.get(app.signalk.self, 'performance.polarSpeedRatio.value')
