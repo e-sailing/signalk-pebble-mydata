@@ -1,0 +1,15 @@
+{
+	"name": "signalk-pebble-mydata",
+	"version": "0.0.0",
+	"description": "A signalk node plugin to show boat data on Pebble smartwatch",
+	"keywords": [
+		"signalk-node-server-plugin"
+	],
+	"license": "Apache-2.0",
+	"author": "Joachim Bakke",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {}
+}
