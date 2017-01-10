@@ -6,6 +6,8 @@ const relevantKeys = Object.keys(signalkSchema.metadata)
   .filter(s => s.indexOf('/vessels/*') >= 0)
   .map(s => s.replace('/vessels/*', '').replace(/\//g, '.').replace(/RegExp/g, '*').substring(1)).sort()
 
+app.use(express.static('/public'))
+
 module.exports = function(app) {
   var plugin = {}
   var unsubscribes = []
