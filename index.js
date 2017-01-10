@@ -19,7 +19,7 @@ module.exports = function(app) {
   plugin.schema = {
     type: "object",
     title: "A signalk node plugin to show boat data on Pebble smartwatch",
-    description: "Point your Mydata app to the address: http://<IP>:<port>/plugin/" + plugin.id + "pebble.json",
+    description: "Point your MyData app to the address: http://<IP>:<port>/plugin/" + plugin.id + "/pebble.json",
     required: [
       "refresh", "vibrate", "font", "theme", "scroll", "light", "blink", "updown"
     ],
@@ -99,7 +99,7 @@ plugin.start = function(props) {
   //from signalk-to-nmea0183:
   //const selfContext = 'vessels.' + app.selfId
   //const selfMatcher = (delta) => delta.context && delta.context === selfContext
-
+/*
   refresh = props.refresh
   vibrate = props.vibrate
   font = props.font
@@ -111,10 +111,10 @@ plugin.start = function(props) {
   debug("starting...")
   debug("started")
 }
-
+*/
 //zones-edit:
 /*
-plugin.start = function(options) {
+plugin.start = function(options) {*/
     refresh = props.refresh
     vibrate = props.vibrate
     font = props.font
@@ -126,17 +126,17 @@ plugin.start = function(options) {
     debug("starting...")
     debug("started")
 
-    unsubscribes = (options.elements || []).reduce((acc, {
+    unsubscribes = (props.elements || []).reduce((acc, {
       key,
       active,
       show,
     }) => {
       if(active) {
-        var stream = app.streambundle.getSelfStream(key)
+        var keyValue = _.get(app.signalk.self, key)
         //exp:
         var jsonContent
-        jsonContent += show + ": " + stream
-        debug("jsonContent: " + jsonContent )
+        jsonContent += show + ": " + keyValue + "\n"
+
       }
       return acc
     }, [])
@@ -148,6 +148,7 @@ plugin.registerWithRouter = function(router) {
 
       router.get("/pebble.json", (req, res) => {
         debug("correct address")
+        debug("jsonContent: " + (JSON.stringify(jsonContent)))
         //for each subscribe
         //var sogFloat = _.get(app.signalk.self, 'navigation.speedOverGround.value')
         var sogFloat = _.get(app.signalk.self, 'performance.polarSpeedRatio.value')
