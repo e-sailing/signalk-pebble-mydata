@@ -61,16 +61,6 @@ module.exports = function(app) {
         }
 
 
-      /*if(active) {
-        // GET method route
-        app.get('/pebble.json', function (req, res) {
-          res.json({ user: 'tobi' })
-        })
-      }*/
-      return acc
-    }, [])
-    return true
-  }
 
   plugin.stop = function() {
     unsubscribes.forEach(f => f())
