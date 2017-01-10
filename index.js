@@ -148,6 +148,7 @@ plugin.registerWithRouter = function(router) {
         debug("correct address")
         //for each subscribe
         var perform = _.get(app.signalk.self, 'performance.polarSpeedRatio.value')
+        debug("performance ratio: " + perform)
         res.json({
           "content": "performance: " + perform + "\nWorld!  \nGood  \nDay ",
           "refresh": refresh,
