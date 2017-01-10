@@ -58,13 +58,10 @@ plugin.start = function(props) {
       router.get("/pebble.json", (req, res) => {
         debug("correct address")
         res.json({
-  "content": "Hello '
-  'World!  '
-  'Good  '
-  'Day ",
+  "content": "Hello \nWorld!  \nGood  \nDay ",
   "refresh": 300,
   "vibrate": 0,
-  "font": 4,
+  "font": 5,
   "theme": 0,
   "scroll": 33,
   "light": 1,
