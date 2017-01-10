@@ -99,14 +99,14 @@ plugin.start = function(props) {
         debug("correct address")
         res.json({
   "content": "Hello \nWorld!  \nGood  \nDay ",
-  "refresh": 300,
-  "vibrate": 0,
-  "font": 5,
-  "theme": 0,
-  "scroll": 33,
-  "light": 1,
-  "blink": 0,
-  "updown": 1
+  "refresh": options.refresh,
+  "vibrate": options.vibrate,
+  "font": options.font,
+  "theme": options.theme,
+  "scroll": options.scroll,
+  "light": options.light,
+  "blink": options.blink,
+  "updown": options.updown
 })
 
 
