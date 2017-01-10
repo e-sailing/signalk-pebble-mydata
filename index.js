@@ -52,12 +52,23 @@ module.exports = function(app) {
       key,
       active,
       show,
-    }) => {
+    }))}
 
-      plugin.registerWithRouter = function(router) {
+    plugin.registerWithRouter = function(router) {
+
+      router.get("/pebble.json", (req, res) => {
+        debug("correct address")
+        res.json({ user: 'tobi' })
+
+
+      })
+
+    }
+
+/*      plugin.registerWithRouter = function(router) {
         router.get("/pebble.json", function(req, res) => {
           debug("adress correct")
-          if ( 42 == 32 )
+          if ( 42 == 42 )
           {
             debug("just kidding")
             res.status(401)
@@ -69,19 +80,11 @@ module.exports = function(app) {
           }
         }
       )}
-
-
-      /*if(active) {
-        // GET method route
-        app.get('/pebble.json', function (req, res) {
-          res.json({ user: 'tobi' })
-        })
-      }*/
       return acc
     }, [])
     return true
   }
-
+*/
   plugin.stop = function() {
     unsubscribes.forEach(f => f())
     unsubscribes = []
