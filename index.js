@@ -52,14 +52,13 @@ module.exports = function(app) {
       key,
       active,
       show,
-    }) => {
+    }))}
 
-      plugin.registerWithRouter = function(router) {
+    plugin.registerWithRouter = function(router) {
         router.post("/pebble.json", (req, res) => {
             res.json({ user: 'tobi' })
-          }
+          })
         }
-      )}
 
 
       /*if(active) {
