@@ -93,52 +93,40 @@ module.exports = function(app) {
 }
 }
 plugin.start = function(props) {
+  refresh = props.refresh
+  vibrate = props.vibrate
+  font = props.font
+  theme = props.theme
+  scroll = props.scroll
+  light = props.light
+  blink = props.blink
+  updown = props.updown
   debug("starting...")
   debug("started")
 }
 
-    plugin.registerWithRouter = function(router) {
+plugin.registerWithRouter = function(router) {
 
       router.get("/pebble.json", (req, res) => {
         debug("correct address")
         res.json({
-  "content": "Hello \nWorld!  \nGood  \nDay ",
-  "refresh": props.refresh,
-  "vibrate": props.vibrate,
-  "font": props.font,
-  "theme": props.theme,
-  "scroll": props.scroll,
-  "light": props.light,
-  "blink": props.blink,
-  "updown": props.updown
-})
+          "content": "Hello \nWorld!  \nGood  \nDay ",
+          "refresh": refresh,
+          "vibrate": vibrate,
+          "font": font,
+          "theme": theme,
+          "scroll": scroll,
+          "light": light,
+          "blink": blink,
+          "updown": updown
+        })
 
 
       })
 
     }
 
-/*      plugin.registerWithRouter = function(router) {
-        router.get("/pebble.json", function(req, res) => {
-          debug("adress correct")
-          if ( 42 == 42 )
-          {
-            debug("just kidding")
-            res.status(401)
-            res.send("just kidding")
-          }
-          else
-          {
-            res.json({ user: 'tobi' })
-          }
-        }
-      )}
-      return acc
-    }, [])
-    return true
-  }
-*/
-  plugin.stop = function() {
+plugin.stop = function() {
     unsubscribes.forEach(f => f())
     unsubscribes = []
   }
