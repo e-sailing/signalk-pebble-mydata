@@ -149,7 +149,7 @@ plugin.registerWithRouter = function(router) {
         //for each subscribe
         //var sogFloat = _.get(app.signalk.self, 'navigation.speedOverGround.value')
         var sogFloat = _.get(app.signalk.self, 'performance.polarSpeedRatio.value')
-        if (sogFloat != 'undefined'){
+        if (typeof sogFloat != 'undefined'){
           var sog = sogFloat.toFixed(2)
           debug("sog: " + sog)
         } else {
